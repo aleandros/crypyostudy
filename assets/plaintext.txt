@@ -1,0 +1,4 @@
+This is a sample plaintext.
+
+* Just for testing
+* I should recover this
