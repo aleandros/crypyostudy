@@ -59,4 +59,3 @@ try:
     decryptor.decrypt()
 except:
     print("Message was modified")
-

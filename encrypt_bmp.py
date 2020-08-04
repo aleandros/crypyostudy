@@ -96,4 +96,3 @@ if __name__ == "__main__":
         decrypt_image(manager, encrypted_path, decrypted_path)
     print("Encrypted path:", encrypted_path)
     print("Decryped path:", decrypted_path)
-

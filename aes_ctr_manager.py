@@ -50,4 +50,3 @@ if __name__ == "__main__":
         recovered = manager.update_decryptor(cipher)
         recovered += manager.finalize_decryptor()
         print("Recovered", recovered)
-

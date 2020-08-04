@@ -6,9 +6,9 @@ import os
 
 
 def broken_cbc_mac_1(message, key, pad=True):
-    aes_cipher = Cipher(algorithms.AES(key),
-                        modes.CBC(bytes(16)),
-                        backend=default_backend())
+    aes_cipher = Cipher(
+        algorithms.AES(key), modes.CBC(bytes(16)), backend=default_backend()
+    )
     aes_encryptor = aes_cipher.encryptor()
 
     if pad:

@@ -9,9 +9,11 @@ import os
 #    and MAC
 # 2. IV should be set to 0
 def cbc_mac(message, key):
-    aes_cipher = Cipher(algorithms.AES(key),
-                        modes.CBC(bytes(16)),  # IV set to 0
-                        backend=default_backend())
+    aes_cipher = Cipher(
+        algorithms.AES(key),
+        modes.CBC(bytes(16)),  # IV set to 0
+        backend=default_backend(),
+    )
     aes_encryptor = aes_cipher.encryptor()
     padder = padding.PKCS7(128).padder()
     padded_message = padder.update(message)

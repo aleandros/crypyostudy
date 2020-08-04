@@ -15,16 +15,10 @@ class TransmissionManager:
         self.iv = os.urandom(16)
 
         self.encryptor = Cipher(
-            algorithms.AES(self.ekey),
-            modes.CTR(self.iv),
-            backend=default_backend()
+            algorithms.AES(self.ekey), modes.CTR(self.iv), backend=default_backend()
         )
 
-        self.mac = hmac.HMAC(
-            self.mkey,
-            hashes.SHA256(),
-            backend=default_backend()
-        )
+        self.mac = hmac.HMAC(self.mkey, hashes.SHA256(), backend=default_backend())
 
     def initialize(self):
         data = self.ekey + self.iv + self.mkey
@@ -35,10 +29,9 @@ class TransmissionManager:
         signature = self.send_private_key.sign(
             data_digest,
             padding.PSS(
-                mgf=padding.MGF1(hashes.SHA256()),
-                salt_length=padding.PSS.MAX_LENGTH
+                mgf=padding.MGF1(hashes.SHA256()), salt_length=padding.PSS.MAX_LENGTH
             ),
-            hashes.SHA256()
+            hashes.SHA256(),
         )
 
         ciphertext = self.recv_public_key.encrypt(
@@ -46,8 +39,8 @@ class TransmissionManager:
             padding.OAEP(
                 mgf=padding.MGF1(algorithm=hashes.SHA256()),
                 algorithm=hashes.SHA256(),
-                label=None
-            )
+                label=None,
+            ),
         )
 
         ciphertext += signature
@@ -61,4 +54,3 @@ class TransmissionManager:
 
     def finalize(self):
         return self.mac.finalize()
-

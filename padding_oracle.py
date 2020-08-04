@@ -85,4 +85,3 @@ def recover_block(n):
 
 
 print(recover_block(0) + recover_block(1))
-

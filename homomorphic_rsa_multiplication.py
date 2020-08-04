@@ -15,14 +15,12 @@ def simple_rsa_decrypt(c, private_key):
 
 
 def random_int():
-    return int.from_bytes(os.urandom(16), byteorder='big')
+    return int.from_bytes(os.urandom(16), byteorder="big")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     private_key = rsa.generate_private_key(
-        public_exponent=65537,
-        key_size=2048,
-        backend=default_backend()
+        public_exponent=65537, key_size=2048, backend=default_backend()
     )
 
     public_key = private_key.public_key()

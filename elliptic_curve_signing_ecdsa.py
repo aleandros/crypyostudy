@@ -9,4 +9,3 @@ signature = private_key.sign(data, ec.ECDSA(hashes.SHA256()))
 public_key = private_key.public_key()
 public_key.verify(signature, data, ec.ECDSA(hashes.SHA256()))
 print("If you read this, message verification was successful")
-

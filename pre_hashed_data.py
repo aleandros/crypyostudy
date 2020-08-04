@@ -28,4 +28,3 @@ public_key.verify(
     hashes.SHA256(),
 )
 print("Verification passed! It would have thrown an exception otherwise")
-

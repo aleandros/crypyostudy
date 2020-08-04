@@ -3,11 +3,13 @@ from cryptography.hazmat.backends import default_backend
 import os
 
 key = os.urandom(16)
-aes_cipher = Cipher(algorithms.AES(key), modes.ECB(), backend=default_backend()) # ECB is INSECURE
+aes_cipher = Cipher(
+    algorithms.AES(key), modes.ECB(), backend=default_backend()
+)  # ECB is INSECURE
 aes_encryptor = aes_cipher.encryptor()
 aes_decryptor = aes_cipher.decryptor()
-message = b"abcd" * 4 # must be multiple of key
-encrypted_data = aes_encryptor.update(message) 
+message = b"abcd" * 4  # must be multiple of key
+encrypted_data = aes_encryptor.update(message)
 print(f"m = '{message}'")
 print(f"c = '{encrypted_data}'")
 print(f"decrypted = '{aes_decryptor.update(encrypted_data)}'")
@@ -25,11 +27,7 @@ aes_decryptor = aes_cipher.decryptor()
 padder = padding.PKCS7(128).padder()
 unpadder = padding.PKCS7(128).unpadder()
 
-plaintexts = [
-    b"SHORT",
-    b"MEDIUM MEDIUM MEDIUM",
-    b"LONG LONG LONG LONG LONG LONG"
-]
+plaintexts = [b"SHORT", b"MEDIUM MEDIUM MEDIUM", b"LONG LONG LONG LONG LONG LONG"]
 
 ciphertexts = []
 
