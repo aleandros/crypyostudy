@@ -51,9 +51,8 @@ async def main(password):
     server = await loop.create_server(
         lambda: EchoServerProtocol(password), "127.0.0.1", 8888
     )
-    await server.serve_forever()
-
     print(f"Serving on {server.sockets[0].getsockname()}")
+    await server.serve_forever()
 
 
 if __name__ == "__main__":
